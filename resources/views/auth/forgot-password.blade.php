@@ -30,6 +30,9 @@
                 <x-button>
                     {{ __('Email Password Reset Link') }}
                 </x-button>
+                <a class="underline text-sm text-gray-600 hover:text-gray-900 m-5" href="{{ route('login') }}">
+                    {{ __('Back to login') }}
+                </a>
             </div>
         </form>
     </x-auth-card>
