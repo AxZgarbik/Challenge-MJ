@@ -1,7 +1,8 @@
 <x-guest-layout>
     <x-auth-card>
         <x-slot name="logo">
-            
+            <label class="label-logo">Course Market</label>
+            <img src="/images/curses-removebg.png" alt="logo" style="width: 400px; height: 350px;">
         </x-slot>
 
         <!-- Session Status -->
@@ -15,19 +16,23 @@
 
             <!-- Email Address -->
             <div>
-                <x-label for="email" :value="__('Email')" />
+                
 
-                <x-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus />
+                <x-input id="email" placeholder="Email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus />
             </div>
 
             <!-- Password -->
-            <div class="mt-4">
-                <x-label for="password" :value="__('Password')" />
+            <div class="flex mt-4 flex-wrap items-center">
+                
 
-                <x-input id="password" class="block mt-1 w-full"
+                <x-input id="password" class="block mt-1 w-11/12"
                                 type="password"
                                 name="password"
+                                placeholder="Password"
                                 required autocomplete="current-password" />
+                <a id="toggleVisibility" class="w-1/12 cursor-pointer pl-1">
+                    <img id="visibilityIcon" src="/images/oculto.png" alt="ver" style="width: 30px; height: 30px;">
+                </a>
             </div>
 
             <!-- Remember Me -->
@@ -52,3 +57,16 @@
         </form>
     </x-auth-card>
 </x-guest-layout>
+<script>
+    document.getElementById('toggleVisibility').addEventListener('click', function() {
+        const passwordInput = document.getElementById('password'); // Asegúrate de tener un input con id="password"
+        const visibilityIcon = document.getElementById('visibilityIcon');
+        if (passwordInput.type === 'password') {
+            passwordInput.type = 'text';
+            visibilityIcon.src = '/images/ver.png'; // Cambia a la imagen de oculto
+        } else {
+            passwordInput.type = 'password';
+            visibilityIcon.src = '/images/oculto.png'; // Cambia de nuevo a la imagen de ver
+        }
+    });
+</script>
